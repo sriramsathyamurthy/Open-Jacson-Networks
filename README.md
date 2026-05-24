@@ -20,8 +20,66 @@ Visual components and Python
 
 
 ## Program
+```
+#Developed by: SRIRAM S
+#Reg No: 212225240155
 
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time1=float(input("Enter the mean  inter service time of Lathe Machine 1 (in secs) :  "))
+ser_time2=float(input("Enter the mean  inter service time of Lathe Machine 2 (in secs) :  "))
+ser_time3=float(input("Enter the mean  inter service time of Lathe Machine 3 (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+lam=1/arr_time
+mu1=1/(ser_time1+Robot_time)
+mu2=1/(ser_time2+Robot_time)
+mu3=1/(ser_time3+Robot_time)
+print("-----------------------------------------------------------------------")
+print("Series Queues with infinite capacity- Open Jackson Network")
+print("-----------------------------------------------------------------------")
+if (lam <  mu1) and (lam <  mu2) and (lam <  mu3):
+    Ls1=lam/(mu1-lam)
+    Ls2=lam/(mu2-lam)
+    Ls3=lam/(mu3-lam)
+    Ls=Ls1+Ls2+Ls3
+    Lq1=Ls1-lam/mu1
+    Lq2=Ls2-lam/mu2
+    Lq3=Ls3-lam/mu3
+    Wq1=Lq1/lam
+    Wq2=Lq2/lam
+    Wq3=Lq3/lam
+    Ws=Ls/(3*lam)
+    print(f"Average number of objects in the system S1 : {Ls1:.2f}")
+    print(f"Average number of objects in the system S2 : {Ls2:.2f}")
+    print(f"Average number of objects in the system S3 : {Ls3:.2f}")
+    print(f"Average number of objects in the overall system    : {Ls:.2f}")
+    print(f"Average number of objects in the conveyor S1  :  {Lq1:.2f}")
+    print(f"Average number of objects in the conveyor S2  :  {Lq2:.2f}")
+    print(f"Average number of objects in the conveyor S3  :  {Lq3:.2f}")
+    print(f"Average waiting time of an object in the conveyor S1 : {Wq1:.2f} secs")
+    print(f"Average waiting time of an object in the conveyor S2 : {Wq2:.2f} secs")
+    print(f"Average waiting time of an object in the conveyor S3 : {Wq3:.2f} secs")
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("----------------------------------------------------------------------")
+```
 
 ## Output
-
+```
+Enter the mean inter arrival time of objects from Feeder (in secs): 20
+Enter the mean  inter service time of Lathe Machine 1 (in secs) :  12
+Enter the mean  inter service time of Lathe Machine 2 (in secs) :  6
+Enter the mean  inter service time of Lathe Machine 3 (in secs) :  4
+Enter the Additional time taken for the Robot (in secs) :  6
+-----------------------------------------------------------------------
+Series Queues with infinite capacity- Open Jackson Network
+-----------------------------------------------------------------------
+Average number of objects in the system S1 : 9.00
+Average number of objects in the system S2 : 1.50
+Average number of objects in the system S3 : 1.00
+Average waiting time of an object in the conveyor : 0.00 secs
+Probability that the system is busy : 0.14
+Probability that the system is empty : 0.86
+--------------------------------------------------------------
+```
 ## Result
+Thus the average number of materials in the system and conveyor, waiting time of the each material in the system and conveyor is found successfully.
